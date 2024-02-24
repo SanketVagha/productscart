@@ -4,7 +4,7 @@ class CartItem(db.Model):
     __tablename__ = "cart"
     id = db.Column(db.Integer, primary_key=True, autoincrement = True)
     def __repr__(self):
-        return self.id
+        return str(self.id)
     
     @classmethod
     def filter(cls, *criterion):

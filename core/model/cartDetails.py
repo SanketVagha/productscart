@@ -8,8 +8,9 @@ class CartDetails(db.Model):
     cart_id = db.Column(db.Integer, db.ForeignKey(CartItem.id), nullable=False)
     product_id = db.Column(db.Integer, db.ForeignKey(Product.id), nullable=False)
     quantity = db.Column(db.Integer, nullable=False)
+    
     def __repr__(self):
-        return self.id
+        return str(self.id)
     
     @classmethod
     def filter(cls, *criterion):
