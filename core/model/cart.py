@@ -1,4 +1,4 @@
-from core import db
+from core import db, app
 
 class CartItem(db.Model):
     __tablename__ = "cart"
@@ -14,3 +14,12 @@ class CartItem(db.Model):
     @classmethod
     def get_by_id(cls, _id):
         return cls.filter(cls.id == _id).first()
+    @classmethod
+    def add_cart(cls):
+        with app.app_context():
+            new_cart = CartItem()
+            db.session.add(new_cart)
+            db.session.commit()
+
+            return new_cart.id
+    
